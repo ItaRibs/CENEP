@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> CALCULAR IMC </title>
+    
+  </head>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family: ARIAL;; }
+
+
+ 
+table {
+ background: #e6eeff;
+  width: 300px;
+  border: px ;
+  padding: 50px;
+  margin: px;
+}
+
+h1{
+color:white;}
+
+h4{
+color:white;}
+
+h3{
+  background-color: WHITE;}
+.header {
+  text-align: center;
+  padding: 50px;}
+
+button {
+  background-color: WHITE; 
+  color: BLACK;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.2s;}
+
+
+div.rodapé{
+color:BLACK;
+background-color:WHITE;}
+
+</style>
+<center>
+
+
+<body bgcolor="#54545c">
+ 
+    <main>
+	<div class="header"> <h1> </h1></div>
+      <div class="">
+  <h3><big>Calculadora de IMC</big></br>
+  Indice de Massa Corporal</h3><br>
+ <h4> Preencha o formulário abaixo com seus dados para obter o seu IMC</h4>
+</div>
+
+<table>
+		<div class="container">
+        <td><div class="input">
+            <label>Nome:</label>
+            <input type="text" id='nome'>
+        </div></td>
+		<td><div class="input">
+            <label>Data de nascimento:</label>
+            <input type="date" id='data'>
+        </div></td>
+        <td><div class="input">
+            <label>Altura:</label>
+            <input type="number" id='altura'>
+        </div></td>
+        <td><div class="input">
+            <label>Peso:</label>
+            <input type="number" id='peso'>
+        </div></td></table>
+        <button id='calcular'>Calcular</button>
+
+        <div class="result" id='resultado'></div>
+      </div> 
+    </main>
+	
+	
+    <script> 
+
+const meuCabecalho = document.querySelector('h1');
+meuCabecalho.textContent = 'Olá Mundo!';
+
+const calcular = document.getElementById('calcular');
+
+function imc () {
+    const nome = document.getElementById('nome').value;
+	const data = document.getElementById('data').value;
+    const altura = document.getElementById('altura').value;
+    const peso = document.getElementById('peso').value;
+    const resultado = document.getElementById('resultado');
+
+    if (nome !== '' && altura !== '' && peso !== ''&& data!== '') {
+
+        const valorIMC = (peso / (altura * altura)).toFixed(1);
+
+        let classificacao = '';
+
+        if (valorIMC < 18.5){
+            classificacao = 'abaixo do peso considerado ideal.';
+        }else if (valorIMC < 25) {
+            classificacao = 'com peso ideal.';
+        }else if (valorIMC < 30){
+            classificacao = 'levemente acima do peso considerado ideal.';
+        }else if (valorIMC < 35){
+            classificacao = 'com obesidade grau I.';
+        }else if (valorIMC < 40){
+            classificacao = 'com obesidade grau II';
+        }else {
+            classificacao = 'com obesidade grau III. ';
+        }
+
+        resultado.textContent = `${nome} nascido/a em ${data} seu IMC é ${valorIMC} e você está ${classificacao}`;
+        
+    }else {
+        resultado.textContent = 'ATENÇÃO! Para obter o resultado é necessário preencher os campos acima';
+    }
+
+}
+
+calcular.addEventListener('click', imc);
+
+
+</script>
+<br>
+<br>
+<br>
+
+<div class="rodapé">
+<h6><b>ATIVIDADE DE PROGRAMAÇÃO - DESENVOLVIMENTO DE SISTEMA </br> 
+    ALUNA: ITAMARA RIBEIRO DA SILVA ___ TURMA: I3M02</b></h6><div>
+
+
+
+	</center>
+  </body>
+</html>
